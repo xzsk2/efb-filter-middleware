@@ -42,6 +42,6 @@ setup(
         "ehforwarderbot"
     ],
     entry_points={
-        "ehforwarderbot.middleware": "zhangzhishan.filter = efb_filter_middleware:FilterMiddleware"
+        "ehforwarderbot.middleware": "xzsk2.filter = efb_filter_middleware:FilterMiddleware"
     }
 )
