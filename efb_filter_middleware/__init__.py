@@ -18,14 +18,12 @@ from .__version__ import __version__ as version
 class WorkMode(Enum):
     black_person = "black_persons"
     white_person = "white_persons"
-    black_public = "black_publics"
-    white_public = "white_publics"
     black_group = "black_groups"
     white_group = "white_groups"
 
 
 class FilterMiddleware(Middleware):
-    middleware_id: str = "zhangzhishan.filter"
+    middleware_id: str = "xzsk2.filter"
     middleware_name: str = "Filter Middleware"
     __version__: str = version
 
@@ -49,8 +47,8 @@ class FilterMiddleware(Middleware):
             if self.match_mode is None:
                 self.match_mode = "fuzz"
 
-        self.logger = logging.getLogger("zhangzhishan.filter")
-        hdlr = logging.FileHandler('./zhangzhishan.filter.log', encoding ="UTF-8")
+        self.logger = logging.getLogger("xzsk2.filter")
+        hdlr = logging.FileHandler('./xzsk2.filter.log', encoding ="UTF-8")
         formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
         hdlr.setFormatter(formatter)
         self.logger.addHandler(hdlr) 
@@ -96,7 +94,7 @@ class FilterMiddleware(Middleware):
                 return False
 
     def is_keep_message(self, work_mode: WorkMode, message: Message, configs: list) -> bool:
-        self.logger.debug("message is_mp type:%s", message.chat.vendor_specific['is_mp'])
+        # self.logger.debug("message is_mp type:%s", message.chat.vendor_specific['is_mp'])
         self.logger.debug("Received message from chat: %s--%s", message.chat.alias, message.chat.name)
         self.logger.debug("match_mode: %s", self.match_mode)
         from_ = message.author.name
@@ -115,13 +113,7 @@ class FilterMiddleware(Middleware):
             if work_mode is WorkMode.white_group:
                 return self.white_match(chat_name, chat_alias, configs)
         else:
-            if message.chat.vendor_specific is not None and message.chat.vendor_specific['is_mp']:
-                if work_mode is WorkMode.black_public:
-                    self.logger.debug("Receive black public")
-                    return self.black_match(from_, from_alias, configs)
-                if work_mode is WorkMode.white_public:
-                    return self.white_match(from_, from_alias, configs)
-            else:                
+            if message.chat.vendor_specific is None:
                 if work_mode is WorkMode.black_person:
                     self.logger.debug("Receive black person")
                     return self.black_match(from_, from_alias, configs)
