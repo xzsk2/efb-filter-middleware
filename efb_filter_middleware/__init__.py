@@ -113,9 +113,8 @@ class FilterMiddleware(Middleware):
             if work_mode is WorkMode.white_group:
                 return self.white_match(chat_name, chat_alias, configs)
         else:
-            if message.chat.vendor_specific is None:
-                if work_mode is WorkMode.black_person:
-                    self.logger.debug("Receive black person")
-                    return self.black_match(from_, from_alias, configs)
-                if work_mode is WorkMode.white_person:
-                    return self.white_match(from_, from_alias, configs)
+            if work_mode is WorkMode.black_person:
+                self.logger.debug("Receive black person")
+                return self.black_match(from_, from_alias, configs)
+            if work_mode is WorkMode.white_person:
+                return self.white_match(from_, from_alias, configs)

@@ -10,30 +10,21 @@ install using pip3::
 
 Configuration
 -----------------
-config files is located in ``~\.ehforwarderbot\profiles\default\zhangzhishan.filter\config.yaml``, a sample config files::
+config files is located in ``~\.ehforwarderbot\profiles\default\xzsk2.filter\config.yaml``, a sample config files::
 
-    version: 0.1
-    match_mode: fuzz
-    work_mode:
-        - black_persons
-        - white_groups
-        - white_publics
+	version: 4.91
+	match_mode: fuzz
+	work_mode:
+		- black_persons
+		- white_groups
+	white_persons:
+		- libai
+	white_groups:
+		- testsyou
+		- 经典
+	black_persons:
+		- nopp
 
-
-    white_publics:
-        - 银行
-    
-    black_persons:
-        - enemy
-
-    white_persons:
-        - john
-        - jack
-        - You
-        - 李白
-
-    white_groups:
-        - family
 
 ``version`` is used to monitor configuration change in runtime, it must be changed when changing the configuration. It is a ``float`` number.
 
