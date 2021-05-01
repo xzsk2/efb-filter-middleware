@@ -6,7 +6,7 @@ Install
 -----------------
 install using pip3::
     
-    pip3 install git+https://github.com/zhangzhishan/efb-filter-middleware
+    pip3 install git+https://github.com/xzsk2/efb-filter-middleware
 
 Configuration
 -----------------
@@ -41,12 +41,10 @@ There are six different ``work_mode``:
 
 - black_persons
 - white_persons
-- black_publics
-- white_publics
 - black_groups
 - white_groups
 
-``white_persons`` means the persons you want to receive messages from, ``white_groups`` means groups you want to receive from, ``white_publics`` means subscription account you want to receive from.
+``white_persons`` means the persons you want to receive messages from, ``white_groups`` means groups you want to receive from.
 
 There are two matching mode:
 
