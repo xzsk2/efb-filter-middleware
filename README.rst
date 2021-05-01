@@ -1,4 +1,4 @@
-A filter middleware for EFB
+A filter middleware for EFB QQ Slave Channel
 ==============
 A filter middleware for EFB can help you only receive messages from persons and groups you want.
 
