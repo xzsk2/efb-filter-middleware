@@ -41,7 +41,7 @@ class FilterMiddleware(Middleware):
         if not os.path.exists(config_path):
             raise EFBException("Filter middleware is not configured.")
         else:
-            config = yaml.load(open(config_path, encoding ="UTF-8"))
+            config = yaml.safe_load(open(config_path, encoding ="UTF-8"))
             self.config_version = 0
             self.match_mode = config.get("match_mode") # fuzz and exact
             if self.match_mode is None:
